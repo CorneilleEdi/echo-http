@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 
 import '../data/post.dart';
+import 'posts_service_interceptor.dart';
 
 class PostsService {
   final String baseApiUrl = "https://jsonplaceholder.typicode.com/posts";
@@ -10,6 +11,7 @@ class PostsService {
 
   PostsService() {
     client.options.baseUrl = baseApiUrl;
+    client.interceptors.add(PostsServiceInterceptor());
   }
 
   Future<List<PostResponseModel>> getPosts() async {

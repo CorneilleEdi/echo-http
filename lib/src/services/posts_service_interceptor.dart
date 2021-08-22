@@ -1,16 +1,18 @@
-// import 'package:http_interceptor/http_interceptor.dart';
-
-// class PostsServiceInterceptor implements InterceptorContract {
-//   @override
-//   Future<RequestData> interceptRequest({required RequestData data}) async {
-//     print(data.toString());
-//     return data;
-//   }
-
-//   @override
-//   Future<ResponseData> interceptResponse({required ResponseData data}) async {
-//       print(data.toString());
-//       return data;
-//   }
-
-// }
+import 'package:dio/dio.dart';
+class PostsServiceInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    print('REQUEST[${options.method}] => PATH: ${options.path}');
+    return super.onRequest(options, handler);
+  }
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    print('RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
+    return super.onResponse(response, handler);
+  }
+  @override
+  void onError(DioError err, ErrorInterceptorHandler handler) {
+    print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
+    return super.onError(err, handler);
+  }
+}
