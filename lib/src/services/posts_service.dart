@@ -20,4 +20,16 @@ class PostsService {
 
     return posts;
   }
+
+  Future<PostResponseModel> getPost(int postId) async {
+     Uri url = Uri.parse(baseApiUrl+"/$postId");
+    final http.Response response =  await http.get(url);
+
+     final rawData  = response.body;
+
+    final decoded =  jsonDecode(rawData);
+
+    return PostResponseModel.fromJson(decoded);
+  }
+  
 }
