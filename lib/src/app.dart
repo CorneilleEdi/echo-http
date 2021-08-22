@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'pages/posts_page.dart';
+
 class EchoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class EchoApp extends StatelessWidget {
       
         primarySwatch: Colors.indigo,
       ),
-      home: Scaffold(appBar: AppBar(title: Text("Echo"),),),
+      home: PostsPage()
     );
   }
 }
