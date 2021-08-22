@@ -1,27 +1,21 @@
-import 'dart:convert';
 
-import 'package:echo/src/services/posts_service_interceptor.dart';
-import 'package:http/http.dart';
-import 'package:http_interceptor/http/http.dart';
+import 'package:dio/dio.dart';
 
 import '../data/post.dart';
 
 class PostsService {
   final String baseApiUrl = "https://jsonplaceholder.typicode.com/posts";
 
-  final Client client = InterceptedClient.build(interceptors: [
-    PostsServiceInterceptor(),
-  ]);
+  Dio client = Dio();
+
+  PostsService() {
+    client.options.baseUrl = baseApiUrl;
+  }
 
   Future<List<PostResponseModel>> getPosts() async {
-    Uri url = Uri.parse(baseApiUrl);
-    final Response response = await client.get(url);
+    final Response response = await client.get("/");
 
-    final rawData = response.body;
-
-    final decoded = jsonDecode(rawData).cast<Map<String, dynamic>>();
-
-    final posts = decoded
+    final posts = response.data
         .map<PostResponseModel>((json) => PostResponseModel.fromJson(json))
         .toList();
 
@@ -29,13 +23,7 @@ class PostsService {
   }
 
   Future<PostResponseModel> getPost(int postId) async {
-    Uri url = Uri.parse(baseApiUrl + "/$postId");
-    final Response response = await client.get(url);
-
-    final rawData = response.body;
-
-    final decoded = jsonDecode(rawData);
-
-    return PostResponseModel.fromJson(decoded);
+    final Response response = await client.get("/$postId");
+    return PostResponseModel.fromJson(response.data);
   }
 }
