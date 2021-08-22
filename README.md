@@ -1,16 +1,21 @@
 # echo
 
-A new Flutter project.
+## [Maitriser les requêtes HTTP avec Flutter](https://meet.loopbin.dev/echo)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![Maitriser les requêtes HTTP avec Flutter](https://storage.googleapis.com/images.meet.loopbin.dev/echo/echo-22-xm.jpg)
+Les bases des requêtes HTTP et comment s'y prendre avec Flutter
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Au programme
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Introduction aux requêtes HTTP
+- HTTP avec Flutter
+- Notions avancées & Dio
+
+
+
+RSVP: https://meet.loopbin.dev/echo
+
+
+En collaboration avec [Flutter Togo](https://twitter.com/fluttertg) 
